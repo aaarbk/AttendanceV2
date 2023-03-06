@@ -73,3 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "hirb", "~> 0.7.3"
+
+gem "bcrypt", "~> 3.1"
