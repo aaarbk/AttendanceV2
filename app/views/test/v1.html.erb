@@ -1,10 +1,19 @@
 <div class="v1">
+<div class="container">
+<div class="row">
+    <div class="col-sm-12">
+    
+       <%= image_tag("logo.svg", width: 200, class: "mx-auto d-block") %>
+    </div>
+</div>
+</div>
+
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-8">
         <div class="card mt-5">
             <div class="card-body">
-            <h5 class="card-title text-center">Login</h5>
+            <h5 class="card-title text-center">Employee Login</h5>
             <form>
                 <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
@@ -14,10 +23,7 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
                 </div>
-                <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="remember-me" name="remember-me">
-                <label class="form-check-label" for="remember-me">Remember me</label>
-                </div>
+
                 <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary">Sign in</button>
                 </div>
