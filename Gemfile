@@ -81,3 +81,9 @@ gem "bcrypt", "~> 3.1"
 gem "cancancan", "~> 3.5"
 
 gem "font-awesome-sass", "~> 6.3"
+
+gem "font-awesome-rails", "~> 4.7"
+
+gem "sassc-rails", "~> 2.1"
+
+gem "materialize-sass", "~> 1.0"

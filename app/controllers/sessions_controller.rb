@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    uname = params[:username]
-    password = params[:password]
+    uname = params[:user][:username]
+    password = params[:user][:password]
     user = User.find_by(username: uname)
+    # debugger
     if user && user.authenticate(password)
       log_in user
       redirect_to employee_path(user.employee) # different from tut (his more general)

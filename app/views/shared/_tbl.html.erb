@@ -1,0 +1,54 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag 'table' %>
+<% end %>
+
+<div class="limiter">
+  <div class="container-table100">
+    <div class="wrap-table100">
+      <div class="table">
+        <div class="row header">
+          <div class="cell">
+            Date
+          </div>
+          <div class="cell">
+            Planned Start
+          </div>
+          <div class="cell">
+            Planned End
+          </div>
+          <div class="cell">
+            First Clock-in
+          </div>
+          <div class="cell">
+            Last Clock-out
+          </div>
+          <div class="cell">
+            Actual Working Hours
+          </div>
+        </div>
+        <% (1..5).each do |i| %>
+          <div class="row">
+            <div class="cell" data-title="Date">
+              08/03/2023
+            </div>
+            <div class="cell" data-title="Planned Start">
+              07:00
+            </div>
+            <div class="cell" data-title="Planned End">
+              14:00
+            </div>
+            <div class="cell" data-title="First Clock-in">
+              <%= Time.new(2023,3,8,7,0)+i*300+rand(600) %>
+            </div>
+            <div class="cell" data-title="Last Clock-out">
+              <%= Time.new(2023,3,8,14,0)-i*300+rand(600) %>
+            </div>
+            <div class="cell" data-title="Actual Working Hours">
+              <%= Time.at(Time.new(2023,3,8,14,0)-i*300+rand(600)-Time.new(2023,3,8,7,0)-i*300+rand(600)).utc.strftime("%H:%M") %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

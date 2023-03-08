@@ -9,7 +9,7 @@
               <h1 class="h3 mb-3 font-weight-normal">Employee Login</h1>
             </div>
 
-            <%= form_for(:user, url: login_path) do |f| %>
+            <%= form_for(:user, url: login_path, method: :post) do |f| %>
               <div class="form-label-group mb-3">
                 <%= f.label :username %>
                 <%= f.text_field :username, class: "form-control form-control-lg", placeholder: "Username", required: true, autofocus: true %>
