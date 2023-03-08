@@ -77,3 +77,5 @@ end
 gem "hirb", "~> 0.7.3"
 
 gem "bcrypt", "~> 3.1"
+
+gem "cancancan", "~> 3.5"

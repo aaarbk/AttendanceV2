@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :employee
+
   USERNAME_REGEX = /\A[a-zA-Z][a-zA-Z0-9]+\z/
   has_secure_password
   validates :username, presence: true,
@@ -9,4 +10,8 @@ class User < ApplicationRecord
   before_save { username.downcase! }
 
   validates :password, presence: true, length: { minimum: 8 }
+
+  def role?(auth_role)
+    employee.role.to_sym == auth_role
+  end
 end

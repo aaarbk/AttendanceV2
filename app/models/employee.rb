@@ -3,6 +3,9 @@ class Employee < ApplicationRecord
   has_many :shift_assignments
   has_many :shifts, through: :shift_assignments
 
+  validates_presence_of :role
+  enum role: %i[employee manager hr]
+
   def self.with_card(c)
     find_by(card_num: c)
   end
