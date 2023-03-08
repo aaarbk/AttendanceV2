@@ -7,6 +7,7 @@ class Employee < ApplicationRecord
     find_by(card_num: c)
   end
 
+  # FIX!!
   def pending_shift # nil if no pending shift
     s = shifts.ongoing # ongoing shifts ()
     return nil if s.empty?
