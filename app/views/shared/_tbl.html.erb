@@ -26,28 +26,33 @@
             Actual Working Hours
           </div>
         </div>
-        <% (1..5).each do |i| %>
-          <div class="row">
+
+        <% @employee.shift_assignments.each do |a| %>
+        <div class="row">
             <div class="cell" data-title="Date">
-              08/03/2023
+              <%= a.shift.start_time.to_date %>
             </div>
             <div class="cell" data-title="Planned Start">
-              07:00
+              <%= a.shift.start_time.strftime("%H:%M")  %>
             </div>
             <div class="cell" data-title="Planned End">
-              14:00
+              <%= a.shift.end_time.strftime("%H:%M")  %>
             </div>
-            <div class="cell" data-title="First Clock-in">
-              <%= Time.new(2023,3,8,7,0)+i*300+rand(600) %>
+             <div class="cell" data-title="First Clock-in">
+              <%= a.clockin_time.strftime("%H:%M")  %>
             </div>
             <div class="cell" data-title="Last Clock-out">
-              <%= Time.new(2023,3,8,14,0)-i*300+rand(600) %>
+              <%= a.clockout_time.strftime("%H:%M")  %>
             </div>
-            <div class="cell" data-title="Actual Working Hours">
-              <%= Time.at(Time.new(2023,3,8,14,0)-i*300+rand(600)-Time.new(2023,3,8,7,0)-i*300+rand(600)).utc.strftime("%H:%M") %>
+
+             <div class="cell" data-title="Actual Working Hours">
+              <%= a.duration %>
             </div>
-          </div>
+        </div>
         <% end %>
+
+
+        
       </div>
     </div>
   </div>

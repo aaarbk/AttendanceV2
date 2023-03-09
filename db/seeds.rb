@@ -16,14 +16,24 @@ Location.create!([
 
 Employee.create!([
                    { card_num: '12345', first_name: 'Mashael', last_name: 'Alemadi', email: 'mashael@example.com', phone: '50082008',
-                     role: 1, user_id: user1.id },
-                   { card_num: '40534', first_name: 'Hessa', last_name: 'Boday', email: 'hessa@example.com', phone: nil, role: 2,
+                     role: :employee, user_id: user1.id },
+                   { card_num: '40534', first_name: 'Hessa', last_name: 'Boday', email: 'hessa@example.com', phone: nil, role: :manager,
                      user_id: user2.id },
-                   { card_num: '41337', first_name: 'Fatima', last_name: 'AlSafar', email: 'fatima@example.com', phone: nil, role: 3,
+                   { card_num: '41337', first_name: 'Fatima', last_name: 'AlSafar', email: 'fatima@example.com', phone: nil, role: :hr,
                      user_id: user3.id },
-                   { card_num: '99999', first_name: 'Noor', last_name: 'AlTamimi', email: 'noor@example.com', phone: nil, role: 1,
+                   { card_num: '99999', first_name: 'Noor', last_name: 'AlTamimi', email: 'noor@example.com', phone: nil, role: :employee,
                      user_id: user4.id }
                  ])
+
+m = Employee.first
+h = Employee.second
+f = Employee.third
+n = Employee.fourth
+
+m.manager_id = h.id
+n.manager_id = h.id
+m.save!
+n.save!
 
 # ShiftAssignment.create!([
 #   {employee_id: 1, shift_id: 1, clockin_time: "2023-02-18 18:57:54", clockout_time: "2023-02-18 18:58:00"},

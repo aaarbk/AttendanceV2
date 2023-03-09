@@ -14,4 +14,16 @@ class User < ApplicationRecord
   def role?(auth_role)
     employee.role.to_sym == auth_role
   end
+
+  def hr?
+    role? :hr
+  end
+
+  def manager?
+    role? :manager
+  end
+
+  def employee?
+    role? :employee
+  end
 end

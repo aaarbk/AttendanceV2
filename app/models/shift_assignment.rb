@@ -3,7 +3,7 @@ class ShiftAssignment < ApplicationRecord
   belongs_to :shift
 
   # validate :shift_cannot_be_in_the_past # shift cannot being assigned to cannot be in the past
-  validate :employee_is_not_already_working_on_date
+  validate :employee_is_not_already_working_on_date, on: create
 
   def self.create_shift_assignments(shift_ids, employee_ids)
     shift_ids.each do |s_id|
@@ -11,6 +11,19 @@ class ShiftAssignment < ApplicationRecord
         ShiftAssignment.create(shift_id: s_id, employee_id: e_id)
       end
     end
+  end
+
+  def completed?
+    clockout_time.present?
+  end
+
+  def duration
+    return nil unless completed?
+
+    duration_in_seconds = (clockout_time - clockin_time).to_i
+    duration_in_hours = duration_in_seconds / 3600
+    duration_in_minutes = (duration_in_seconds % 3600) / 60
+    format('%02d:%02d', duration_in_hours, duration_in_minutes)
   end
 
   private
