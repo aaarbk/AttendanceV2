@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_gravatar :email
   belongs_to :user
   has_many :shift_assignments
   has_many :shifts, through: :shift_assignments

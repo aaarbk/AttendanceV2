@@ -11822,6 +11822,13 @@ h5,
     position: relative;
 }
 
+#sidebar .card {
+    background-color: inherit;
+    color: inherit;
+    font-size: inherit;
+    /* any other styles you need for the card element */
+}
+
 #sidebar .h6 {
     color: #fff;
 }

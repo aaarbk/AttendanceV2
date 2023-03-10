@@ -102,6 +102,8 @@ GEM
       sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    has_gravatar (0.0.3b)
+      activerecord (>= 5.0.0.rc1)
     hirb (0.7.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -241,6 +243,7 @@ DEPENDENCIES
   debug
   font-awesome-rails (~> 4.7)
   font-awesome-sass (~> 6.3)
+  has_gravatar (~> 0.0.3b)
   hirb (~> 0.7.3)
   jbuilder
   jsbundling-rails

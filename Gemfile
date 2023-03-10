@@ -87,3 +87,5 @@ gem "font-awesome-rails", "~> 4.7"
 gem "sassc-rails", "~> 2.1"
 
 gem "materialize-sass", "~> 1.0"
+
+gem "has_gravatar", "~> 0.0.3b"
