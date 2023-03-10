@@ -5,6 +5,9 @@ class TestController < ApplicationController
 
   def v3; end
 
+  def v5
+  end
+
   def proc
     puts "#{params}"
   end

@@ -28,8 +28,9 @@ module CalendarHelper
                   content_tag(:td)
                 else
                   day_num = (day.nil? ? '' : day.day)
-                  css_class = (day == Date.current ? 'table-primary' : '')
-                  content_tag(:td, class: "text-center #{css_class}",
+                  css_classes = ['text-center', day == Date.current ? 'table-primary' : '']
+                  css_classes << 'prev-month' if day && day < first_day
+                  content_tag(:td, class: css_classes.join(' '),
                                    style: 'width: calc(100% / 7); padding: 5px; border-radius: 10px; margin: 5px;') do
                     concat content_tag(:span, day_num, class: 'fw-bold')
                     concat tag(:br)
