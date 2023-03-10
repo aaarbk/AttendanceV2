@@ -30,4 +30,17 @@ module ApplicationHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+
+  ###############
+
+    def sidebar_links_partial
+    if current_user.manager?
+      'shared/manager_sidebar_links'
+    else
+      'shared/employee_sidebar_links'
+    end
+  end
+
+  
 end
