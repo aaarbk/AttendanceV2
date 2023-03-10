@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  post 'process', to: 'test#proc'
+  post 'process', to: 'test#proc' # remove??
 
   root 'sessions#new'
+
+  # allocate employee shifts to system (POST from managers' form)
+  post '/sa', to: 'attendance#shift_allocate'
+
+  get 'alloc_form', to: 'attendance#allocate' # instead of shift/new
 end

@@ -18,8 +18,13 @@ class Employee < ApplicationRecord
     s.first.shift_assignments.where(employee_id: id).where(clockin_time: nil).first
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
   #   def working_on(date)
   #     assigned_dates = shifts.map { |s| s.start_time.to_date } | [shifts.last.end_time.to_date]
   #     assigned_dates.include? date.to_date
   #   end
+
+  scope :for_manager, ->(id){where(manager_id:id)}
 end

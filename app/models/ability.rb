@@ -7,6 +7,8 @@ class Ability
     if user.hr?
       can :manage, :all
     elsif user.manager?
+      can :create, :shift_allocations
+      can :read, Employee, id: user.id
       can :manage, Employee, manager_id: user.id # make sure the ids of employees and users match!!!
     else
       can :read, Employee, id: user.id # self
