@@ -38,7 +38,7 @@ n.save!
 ShiftAssignment.delete_all
 Shift.delete_all
 
-# Shift.create_shifts("2023-03-01", "2023-03-12", "10:00", "18:00", 1)
+Shift.create_shifts("2023-03-01", "2023-03-12", "10:00", "18:00", 1)
 
 s_ids = Shift.all.map {|s| s.id}
 e_ids = [1, 4]
