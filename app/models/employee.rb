@@ -11,6 +11,13 @@ class Employee < ApplicationRecord
     find_by(card_num: c)
   end
 
+  def managed_employees
+    Employee.where(manager_id:self.id)
+  end
+
+  def completed_shifts
+    shift_assignments.where.not(clockout_time:nil)
+  end
   # FIX!!
   def pending_shift # nil if no pending shift
     s = shifts.ongoing # ongoing shifts ()
