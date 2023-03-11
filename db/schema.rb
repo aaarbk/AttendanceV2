@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_111019) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_11_065144) do
   create_table "employees", force: :cascade do |t|
     t.string "card_num"
     t.string "first_name"
@@ -32,6 +32,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_111019) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shift_assignments", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.integer "shift_id", null: false
@@ -47,6 +54,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_111019) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "somethings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
