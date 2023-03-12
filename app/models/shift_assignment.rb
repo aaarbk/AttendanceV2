@@ -9,6 +9,8 @@ class ShiftAssignment < ApplicationRecord
     puts "Hi!!!"
   end
 
+  scope :completed, -> {where.not(clockout_time:nil)}
+  scope  :chronological, -> {order('clockin_time desc')}
   def self.create_shift_assignments(shift_ids, employee_ids)
     shift_ids.each do |s_id|
       employee_ids.each do |e_id|

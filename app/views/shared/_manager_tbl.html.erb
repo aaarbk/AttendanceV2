@@ -1,5 +1,5 @@
 <% content_for :head do %>
-<%= stylesheet_link_tag 'table' %>
+<%= stylesheet_link_tag 'manager_table' %>
 <% end %>
 
 <div class="limiter">
@@ -7,6 +7,9 @@
     <div class="wrap-table100">
       <div class="table">
         <div class="row header">
+          <div class="cell">
+            Employee Name
+          </div>
           <div class="cell">
             Date
           </div>
@@ -27,8 +30,11 @@
           </div>
         </div>
 
-        <% @employee.shift_assignments.each do |a| %>
+        <% current_user.employee.managed_employees_completed_shifts.map  do |a| %>
         <div class="row">
+            <div class="cell" data-title="Name">
+              <%= a.employee.name %>
+            </div>
             <div class="cell" data-title="Date">
               <%= a.shift.start_time.to_date %>
             </div>

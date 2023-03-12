@@ -3,4 +3,5 @@
 //= link application.css
 //= link main.css
 //= link table.css
+//= link manager_table.css
 //= link sidebar.css

@@ -15,6 +15,16 @@ class Employee < ApplicationRecord
     Employee.where(manager_id:self.id)
   end
 
+  def managed_employees_completed_shifts
+    if role == "manager"
+      ShiftAssignment.completed.joins(:employee).where("manager_id = ?", self.id).chronological
+    elsif role == "hr"
+      ShiftAssignment.completed.joins(:employee).chronological
+    else
+      nil
+    end
+  end
+
   def completed_shifts
     shift_assignments.where.not(clockout_time:nil)
   end
@@ -29,10 +39,12 @@ class Employee < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
-  #   def working_on(date)
+
+  scope :for_manager, ->(id){where(manager_id:id)}
+
+    #   def working_on(date)
   #     assigned_dates = shifts.map { |s| s.start_time.to_date } | [shifts.last.end_time.to_date]
   #     assigned_dates.include? date.to_date
   #   end
 
-  scope :for_manager, ->(id){where(manager_id:id)}
 end
