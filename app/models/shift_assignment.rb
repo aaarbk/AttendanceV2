@@ -5,6 +5,10 @@ class ShiftAssignment < ApplicationRecord
   # validate :shift_cannot_be_in_the_past # shift cannot being assigned to cannot be in the past
   validate :employee_is_not_already_working_on_date, on: create
 
+  def edit
+    puts "Hi!!!"
+  end
+
   def self.create_shift_assignments(shift_ids, employee_ids)
     shift_ids.each do |s_id|
       employee_ids.each do |e_id|

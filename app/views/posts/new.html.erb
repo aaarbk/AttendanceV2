@@ -34,28 +34,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $(document).ready(function() {
-    $('#new-post-link').click(function() {
-      $('#new-post-modal').modal('show');
-    });
-
-    $('#new-post-modal').on('ajax:success', function(event) {
-      $('#new-post-modal').modal('hide');
-      $('#posts').prepend(
-        '<div class="card">' +
-        '<div class="card-body">' +
-        '<h5 class="card-title">' + event.detail[0].title + '</h5>' +
-        '<p class="card-text">' + event.detail[0].body + '</p>' +
-        '</div>' +
-        '</div>'
-      );
-      $('#new-post-form')[0].reset();
-    });
-
-    $('#new-post-modal').on('ajax:error', function(event) {
-      alert('Error: ' + event.detail[0].statusText);
-    });
-  });
-</script>

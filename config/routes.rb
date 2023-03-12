@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   resources :employees, only: [:show]
+
+  #resources :shift_assignments do
+  #  put 'amend', on: :member
+  #end
+  get '/amend', to: "shift_assignments#edit", as: :amend
+
   # get 'employees/index'
   # get 'employees/show'
   # remove
@@ -18,7 +24,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  post 'process', to: 'test#proc' # remove??
+  post 'process', to: 'attendance#proc' # remove??
 
   root 'sessions#new'
 

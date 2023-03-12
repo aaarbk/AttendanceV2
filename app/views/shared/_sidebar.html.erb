@@ -41,10 +41,15 @@
        <main>
 	   		<% if current_user.employee? %>
             <%= render partial: 'shared/tbl1', locals: {employee: @employee, show_name: false}  %>
+			<% elsif current_user.hr? %>
+			<% Employee.all.each do |e| %>
+			 <%= render partial: 'shared/tbl1', locals: {employee: e, show_name: true}  %>
+			 <% end %>
 			<% else %>
 			<% current_user.employee.managed_employees.each do |e| %>
 			
 			 <%= render partial: 'shared/tbl1', locals: {employee: e, show_name: true}  %>
+
 			<% end %>
 			<% end %>
   </main>
