@@ -8,6 +8,10 @@ class TestController < ApplicationController
   def v5
   end
 
+  def tabs
+  
+  end
+  
   def proc
     puts "#{params}"
   end

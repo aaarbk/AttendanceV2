@@ -1,8 +1,9 @@
 class AttendanceController < ApplicationController
-  def welcome
+  def clock
   end
 
   def proc
+    # debugger
     puts "The card number is #{params}"
     e = Employee.with_card  params[:card_num]
     if e
@@ -28,12 +29,12 @@ class AttendanceController < ApplicationController
     else
       flash[:notice] = "Employee doesn't exist!"
     end
-    redirect_to "/welcome"
+    redirect_to "/clock"
   end
   def allocate
     authorize! :create, :shift_allocations
     @employees = Employee.for_manager(current_user.employee.id) # 1-1 relationship
-    render "alloc_form"
+    #render "alloc_form"
   end
 
   def shift_allocate

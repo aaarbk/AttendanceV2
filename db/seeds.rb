@@ -35,8 +35,8 @@ n.manager_id = h.id
 m.save!
 n.save!
 
-ShiftAssignment.delete_all
-Shift.delete_all
+#ShiftAssignment.delete_all
+#Shift.delete_all
 
 Shift.create_shifts("2023-03-01", "2023-03-12", "10:00", "18:00", 1)
 
@@ -54,6 +54,9 @@ ShiftAssignment.all.each do |a|
 	a.clockout_time = r2
 	a.save!
 end
+
+ls = Shift.create(start_time:4.hours.ago, end_time:4.hours.after, location_id:1)
+ShiftAssignment.create(shift:ls, employee:m)
 
 
 

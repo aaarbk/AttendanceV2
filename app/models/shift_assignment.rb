@@ -6,7 +6,7 @@ class ShiftAssignment < ApplicationRecord
   validate :employee_is_not_already_working_on_date, on: create
 
   def edit
-    puts "Hi!!!"
+    # puts "Hi!!!"
   end
 
   scope :completed, -> {where.not(clockout_time:nil)}

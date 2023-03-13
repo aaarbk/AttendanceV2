@@ -36,6 +36,21 @@ class Employee < ApplicationRecord
     s.first.shift_assignments.where(employee_id: id).where(clockin_time: nil).first
   end
 
+  def has_pending_shift?
+    pending_shift.present?
+  end
+
+  def working_shift
+    s = shift_assignments.where.not(clockin_time: nil).where(clockout_time: nil)
+    return nil if s.empty?
+
+    s
+  end
+
+  def is_working_shift?
+    working_shift.present?
+  end
+  
   def name
     "#{first_name} #{last_name}"
   end

@@ -30,8 +30,8 @@
           </div>
         </div>
 
-       <% employee.completed_shifts.each do |a| %>
-  <div class="row edit-shift-assignment" data-bs-toggle="modal" data-bs-target="#edit-shift-assignment-modal" data-shift-assignment-id="<%= a.id %>">
+       <% employee.completed_shifts.chronological.each do |a| %>
+    <div class="row">
     <div class="cell" data-title="Date">
       <%= a.shift.start_time.to_date %>
     </div>
