@@ -33,7 +33,11 @@ class AttendanceController < ApplicationController
   end
   def allocate
     authorize! :create, :shift_allocations
-    @employees = Employee.for_manager(current_user.employee.id) # 1-1 relationship
+    if current_user.hr?
+      @employees = Employee.all
+    else
+      @employees = Employee.for_manager(current_user.employee.id) # 1-1 relationship
+    end
     #render "alloc_form"
   end
 
