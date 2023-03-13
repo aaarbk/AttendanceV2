@@ -36,7 +36,7 @@ module ApplicationHelper
   ###############
 
     def sidebar_links_partial
-    if current_user.manager?
+    if current_user.manager? || current_user.hr?
       'shared/manager_sidebar_links'
     else
       'shared/employee_sidebar_links'
