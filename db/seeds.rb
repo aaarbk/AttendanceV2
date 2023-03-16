@@ -15,7 +15,7 @@ Location.create!([
                  ])
 
 Employee.create!([
-                   { card_num: '12345', first_name: 'Mashael', last_name: 'Alemadi', email: 'malemadi19@gmail.com', phone: '50082008',
+                   { card_num: '41368', first_name: 'Mashael', last_name: 'Alemadi', email: 'malemadi19@gmail.com', phone: '50082008',
                      role: :employee, user_id: user1.id },
                    { card_num: '40534', first_name: 'Hessa', last_name: 'Boday', email: 'hessaboday1@gmail.com', phone: nil, role: :manager,
                      user_id: user2.id },
