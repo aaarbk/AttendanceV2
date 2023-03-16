@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8 }
 
   def role?(auth_role)
+    # debugger
+    return false if employee.nil?
     employee.role.to_sym == auth_role
   end
 

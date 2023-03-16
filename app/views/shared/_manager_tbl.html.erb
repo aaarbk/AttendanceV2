@@ -1,15 +1,15 @@
 <% content_for :head do %>
-<%= stylesheet_link_tag 'table' %>
+<%= stylesheet_link_tag 'manager_table' %>
 <% end %>
 
 <div class="limiter">
-<% if show_name %>
- <h3 class="text-primary"><%= employee.name %></h2>
-<% end %>
   <div class="container-table100">
     <div class="wrap-table100">
       <div class="table">
         <div class="row header">
+          <div class="cell">
+            Employee Name
+          </div>
           <div class="cell">
             Date
           </div>
@@ -30,28 +30,32 @@
           </div>
         </div>
 
-       <% employee.completed_shifts.chronological.each do |a| %>
-    <div class="row">
-    <div class="cell" data-title="Date">
-      <%= a.shift.start_time.to_date %>
-    </div>
-    <div class="cell" data-title="Planned Start">
-      <%= a.shift.start_time.strftime("%H:%M") %>
-    </div>
-    <div class="cell" data-title="Planned End">
-      <%= a.shift.end_time.strftime("%H:%M") %>
-    </div>
-    <div class="cell" data-title="First Clock-in">
-      <%= a.clockin_time.strftime("%H:%M") %>
-    </div>
-    <div class="cell" data-title="Last Clock-out">
-      <%= a.clockout_time.strftime("%H:%M") %>
-    </div>
-    <div class="cell" data-title="Actual Working Hours">
-      <%= "#{a.duration} hours" %>
-    </div>
-  </div>
-<% end %>
+        <% current_user.employee.managed_employees_completed_shifts.map  do |a| %>
+        <div class="row edit-shift-assignment" data-bs-toggle="modal" data-bs-target="#edit-shift-assignment-modal" data-shift-assignment-id="<%= a.id %>">
+            <div class="cell" data-title="Name">
+              <%= a.employee.name %>
+            </div>
+            <div class="cell" data-title="Date">
+              <%= a.shift.start_time.to_date %>
+            </div>
+            <div class="cell" data-title="Planned Start">
+              <%= a.shift.start_time.strftime("%H:%M")  %>
+            </div>
+            <div class="cell" data-title="Planned End">
+              <%= a.shift.end_time.strftime("%H:%M")  %>
+            </div>
+             <div class="cell" data-title="First Clock-in">
+              <%= a.clockin_time.strftime("%H:%M")  %>
+            </div>
+            <div class="cell" data-title="Last Clock-out">
+              <%= a.clockout_time.strftime("%H:%M")  %>
+            </div>
+
+             <div class="cell" data-title="Actual Working Hours">
+              <%= a.duration %>
+            </div>
+        </div>
+        <% end %>
 
 
         
@@ -60,11 +64,12 @@
   </div>
 </div>
 
+<% if current_user.hr? %>
 <div class="modal" tabindex="-1" role="dialog" id="edit-shift-assignment-modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Shift Assignment</h5>
+        <h5 class="modal-title">Edit Attendance Log</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -92,3 +97,4 @@
     </div>
   </div>
 </div>
+<% end %>

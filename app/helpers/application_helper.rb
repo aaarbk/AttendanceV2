@@ -15,6 +15,7 @@ module ApplicationHelper
 
   def log_out
     session.delete(:user_id)
+    # reset_session
     @current_user = nil
   end
 
@@ -35,7 +36,7 @@ module ApplicationHelper
   ###############
 
     def sidebar_links_partial
-    if current_user.manager?
+    if current_user.manager? || current_user.hr?
       'shared/manager_sidebar_links'
     else
       'shared/employee_sidebar_links'

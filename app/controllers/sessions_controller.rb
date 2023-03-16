@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     # render 'new', layout: false
-    render 'newb', layout: true
+    #  render 'newb', layout: true
   end
 
   def create
@@ -21,6 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to root_url
+    redirect_to login_path
   end
 end
